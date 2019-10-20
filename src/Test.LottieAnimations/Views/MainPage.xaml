@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Test.LottieAnimations.Views.MainPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             xmlns:local="clr-namespace:Test.LottieAnimations.ViewModels"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d">
+  <ContentPage.BindingContext>
+    <local:MainPageViewModel />
+  </ContentPage.BindingContext>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <StackLayout Grid.Row="0"
+                 Margin="5,0"
+                 HorizontalOptions="FillAndExpand"
+                 Orientation="Horizontal">
+      <Button Command="{Binding StartPlayingCommand}"
+              HorizontalOptions="FillAndExpand"
+              Text="Play" />
+
+      <Button Command="{Binding StopPlayingCommand}"
+              HorizontalOptions="FillAndExpand"
+              Text="Pause" />
+    </StackLayout>
+
+    <forms:AnimationView x:Name="animationView"
+                         Grid.Row="1"
+                         Animation="AniMangoWriting.json"
+                         AutoPlay="True"
+                         ClickedCommand="{Binding ClickedCommand}"
+                         HorizontalOptions="FillAndExpand"
+                         IsPlaying="{Binding IsPlaying}"
+                         Loop="false"
+                         OnFinish="Handle_OnFinish"
+                         PlaybackFinishedCommand="{Binding FinishedCommand}"
+                         PlaybackStartedCommand="{Binding PlayingCommand}"
+                         VerticalOptions="FillAndExpand" />
+  </Grid>
+</ContentPage>

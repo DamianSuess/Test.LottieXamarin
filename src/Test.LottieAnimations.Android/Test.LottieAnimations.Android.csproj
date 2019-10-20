@@ -66,6 +66,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\AniLloadingSkullBlueBg-%283490dc%29.json" />
+    <AndroidAsset Include="Assets\AniMangoWriting.json" />
+    <AndroidAsset Include="Assets\AniCheckmark.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
