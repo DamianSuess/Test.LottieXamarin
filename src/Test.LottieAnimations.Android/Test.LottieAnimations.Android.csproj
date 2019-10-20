@@ -66,9 +66,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\AniLloadingSkullBlueBg-%283490dc%29.json" />
+    <AndroidAsset Include="Assets\AniLoadingSkullBlueBg-%283490dc%29.json" />
     <AndroidAsset Include="Assets\AniMangoWriting.json" />
     <AndroidAsset Include="Assets\AniCheckmark.json" />
+    <AndroidAsset Include="Assets\6074-like-heart.json" />
+    <AndroidAsset Include="Assets\1735-animated-indonesian-first-president.json" />
+    <AndroidAsset Include="Assets\4461-love-as-energy-charge.json" />
+    <AndroidAsset Include="Assets\4767-love.json" />
+    <AndroidAsset Include="Assets\4770-lady-and-dove.json" />
+    <AndroidAsset Include="Assets\5787-love-heart-uiux-icon-animation.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />

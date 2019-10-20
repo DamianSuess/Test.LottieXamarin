@@ -1,23 +1,60 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using Lottie.Forms;
 using Xamarin.Forms;
 
 namespace Test.LottieAnimations.ViewModels
 {
   public class MainPageViewModel : INotifyPropertyChanged
   {
-    public event PropertyChangedEventHandler PropertyChanged;
+    private readonly List<string> _fileList = new List<string>
+    {
+      "1735-animated-indonesian-first-president",
+      "4461-love-as-energy-charge",
+      "4767-love",
+      "4770-lady-and-dove",
+      "5787-love-heart-uiux-icon-animation",
+      "6074-like-heart",
+      "AniCheckmark",
+      // "AniLoadingSkullBlueBg-(3490dc)",
+      // "AniMangoWriting",
+    };
+
+    private string _animationFile;
+    private int _currentIndex = 0;
+    private bool _isPlaying;
 
     public MainPageViewModel()
     {
-      StartPlayingCommand = new Command(() => IsPlaying = true);      
-      StopPlayingCommand = new Command(() => IsPlaying = false);
+      AnimationFile = "AniMangoWriting.json";
 
-      PlayingCommand = new Command(() => DisplayAlert($"{nameof(AnimationView.PlaybackStartedCommand)} executed!"));
-      FinishedCommand = new Command(() => DisplayAlert($"{nameof(AnimationView.PlaybackFinishedCommand)} executed!"));
-      ClickedCommand = new Command(() => DisplayAlert($"{nameof(AnimationView.ClickedCommand)} executed!"));
+      GetNextAnimation = new Command(() =>
+      {
+        var name = _fileList[_currentIndex];
+
+        AnimationFile = $"{name}.json";
+        ++_currentIndex;
+
+        if (_currentIndex >= _fileList.Count)
+          _currentIndex = 0;
+      });
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    public string AnimationFile
+    {
+      get => _animationFile;
+      set => Set(ref _animationFile, value);
+    }
+
+    public ICommand GetNextAnimation { get; }
+
+    public bool IsPlaying
+    {
+      get => _isPlaying;
+      set => Set(ref _isPlaying, value);
     }
 
     private void DisplayAlert(string message) => Application.Current.MainPage.DisplayAlert(string.Empty, message, "OK");
@@ -30,23 +67,5 @@ namespace Test.LottieAnimations.ViewModels
       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
       return true;
     }
-
-    private bool _isPlaying;
-
-    public bool IsPlaying
-    {
-      get => _isPlaying;
-      set => Set(ref _isPlaying, value);
-    }
-
-    public ICommand StartPlayingCommand { get; }
-
-    public ICommand StopPlayingCommand { get; }
-
-    public ICommand PlayingCommand { get; }
-
-    public ICommand FinishedCommand { get; }
-
-    public ICommand ClickedCommand { get; }
   }
 }
