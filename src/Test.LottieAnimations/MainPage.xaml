@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Test.LottieAnimations.MainPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d">
+
+  <StackLayout>
+    <!--  Place new controls here  -->
+    <Label HorizontalOptions="Center"
+           Text="Welcome to Xamarin.Forms!"
+           VerticalOptions="CenterAndExpand" />
+
+    <forms:AnimationView x:Name="animationView"
+                         Grid.Row="1"
+                         Animation="LottieLogo1.json"
+                         AutoPlay="false"
+                         ClickedCommand="{Binding ClickedCommand}"
+                         HorizontalOptions="FillAndExpand"
+                         Loop="false"
+                         OnFinish="Handle_OnFinish"
+                         PlaybackFinishedCommand="{Binding FinishedCommand}"
+                         PlaybackStartedCommand="{Binding PlayingCommand}"
+                         VerticalOptions="FillAndExpand" />
+  </StackLayout>
+</ContentPage>
